@@ -7,9 +7,11 @@ environment:
   sdk: ^3.5.0
 
 dependencies:
+  dio: ^5.7.0
   fl_chart: ^0.69.0
   flutter:
     sdk: flutter
+  provider: ^6.1.2
   web_socket_channel: ^3.0.1
 
 dev_dependencies:
@@ -19,3 +21,35 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+  - assets/images/
+    
+  fonts:
+    - family: Euclid
+      fonts:
+        - asset: assets/fonts/Euclid-CircularB-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/Euclid-CircularB-Bold-Italic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Euclid-Circular-B-SemiBold.ttf
+          weight: 700
+        - asset: assets/fonts/Euclid-Circular-B-SemiBold-Italic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Euclid-Circular-B-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/Euclid-Circular-B-Medium-Italic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Euclid-Circular-B-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Euclid-Circular-B-Italic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Euclid-Circular-B-Light.ttf
+          weight: 400
+        - asset: assets/fonts/Euclid-Circular-B-Light-Italic.ttf
+          weight: 400
+          style: italic
