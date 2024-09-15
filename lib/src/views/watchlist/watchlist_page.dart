@@ -45,30 +45,69 @@ class _WatchlistPageState extends State<WatchlistPage> {
           _buldTile(() {}, _buildContent(viewModel.btcPrice!))
         ]).addPd(all: 10);
       }
-      return const Center(child: CircularProgressIndicator());
+      return Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          const CircularProgressIndicator(),
+          AppStyles.yGapSm,
+          Text(
+            "Loading...",
+            style: AppStyles.primBold(16),
+          )
+        ],
+      ));
     });
   }
 
   Widget _buildContent(CryptoPrice? item) {
+    String s = "\$";
+    String typeCoin = item!.tickerCode == 'ETH-USD' ? 'Etherium' : 'Bitcoin';
+    String assetsImg = item.tickerCode == 'ETH-USD'
+        ? "ethereum-eth-logo.png"
+        : "bitcoin-btc-logo.png";
+    String dialyDifference = (item.dailyDiffPrice!.isNegative)
+        ? "${item.dailyDiffPrice}"
+        : "+${item.dailyDiffPrice}";
+    String dcPercentage = (item.dailyChangePerc!.isNegative)
+        ? "(${item.dailyChangePerc}%)"
+        : "(+${item.dailyChangePerc}%)";
     return Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(item!.tickerCode!),
-                Text(item.tickerCode! == 'ETH-USD' ? 'Etherium' : 'Bitcoin')
-              ]),
           Expanded(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+              child: Row(
+            children: <Widget>[
+              Image.asset(height: 64, width: 64, "assets/images/$assetsImg"),
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Text(
+                      typeCoin,
+                      style: AppStyles.primBold(20),
+                    ),
+                    Text(item.tickerCode!)
+                  ])
+            ],
+          )),
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
                 Text(
-                    "${NumberFormat("#,###", "en_US").format(item.lastPrice!)} USD"),
-                Text("${item.dailyDiffPrice} (${item.dailyChangePerc}%)")
-              ])),
+                  "$s ${NumberFormat("#,###", "en_US").format(item.lastPrice!)}",
+                  style: AppStyles.primBold(16),
+                ),
+                Text(
+                  "$dialyDifference $dcPercentage",
+                  style: (item.dailyDiffPrice!.isNegative)
+                      ? AppStyles.primLight(14, Colors.red)
+                      : AppStyles.primLight(14),
+                )
+              ]),
         ]);
   }
 

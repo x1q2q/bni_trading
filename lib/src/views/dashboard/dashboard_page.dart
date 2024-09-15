@@ -190,7 +190,19 @@ class _DashboardPageState extends State<DashboardPage> {
               duration: const Duration(milliseconds: 1000),
             ).addPd(all: 10);
           }
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              const CircularProgressIndicator(),
+              AppStyles.yGapSm,
+              Text(
+                "Loading...",
+                style: AppStyles.primBold(16),
+              )
+            ],
+          ));
         },
       ),
     );

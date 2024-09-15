@@ -22,21 +22,7 @@ class AppStyles {
         fontWeight: FontWeight.bold, color: AppColors.primary, fontSize: px);
   }
 
-  static TextStyle primLight(double px) {
-    return TextStyle(
-        fontWeight: FontWeight.w400, color: AppColors.primary, fontSize: px);
+  static TextStyle primLight(double px, [Color? color = AppColors.primary]) {
+    return TextStyle(fontWeight: FontWeight.w400, color: color, fontSize: px);
   }
-
-  static ButtonStyle btnElevated(Color color) {
-    return ElevatedButton.styleFrom(
-      minimumSize: const Size(70, 40),
-      foregroundColor: Colors.white,
-      backgroundColor: color,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-    );
-  }
-
-  static ButtonStyle elevGreenMd = AppStyles.btnElevated(AppColors.primary);
 }
