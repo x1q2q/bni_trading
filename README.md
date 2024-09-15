@@ -48,3 +48,6 @@ flutter run
     <td align="center" valign="center"><img src="screenshots/chart.jpeg" width="50%"></td>
   </tr>
  </table>
+
+ ## Download APK Relase
+ link: https://github.com/x1q2q/bni_trading/blob/main/bni_trading.apk
